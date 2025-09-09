@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract VoteToken is ERC721, AccessControl {
+contract VoteToken is ERC721Enumerable, AccessControl {
     using Counters for Counters.Counter;
     
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
@@ -29,7 +30,7 @@ contract VoteToken is ERC721, AccessControl {
     }
     
     function burn(uint256 tokenId) external onlyRole(BURNER_ROLE) {
-        require(_exists(tokenId), "Token does not exist");
+        //require(_exists(tokenId), "Token does not exist");
         address owner = ownerOf(tokenId);
         _hasVoted[owner] = true;
         _burn(tokenId);
@@ -40,22 +41,22 @@ contract VoteToken is ERC721, AccessControl {
     }
     
     // Override transfer functions to make token soulbound (non-transferable)
-    function transferFrom(address, address, uint256) public pure override {
+    function transferFrom(address, address, uint256) public pure override(ERC721, IERC721) {
         revert("VoteToken: non-transferable");
     }
     
-    function safeTransferFrom(address, address, uint256) public pure override {
-        revert("VoteToken: non-transferable");
-    }
+    //function safeTransferFrom(address, address, uint256) public pure override {
+    //    revert("VoteToken: non-transferable");
+    //}
     
-    function safeTransferFrom(address, address, uint256, bytes memory) public pure override {
+    function safeTransferFrom(address, address, uint256, bytes memory) public pure override(ERC721, IERC721) {
         revert("VoteToken: non-transferable");
     }
     
     function supportsInterface(bytes4 interfaceId)
         public
         view
-        override(ERC721, AccessControl)
+        override(ERC721Enumerable, AccessControl)
         returns (bool)
     {
         return super.supportsInterface(interfaceId);
