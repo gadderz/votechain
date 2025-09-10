@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
+pragma solidity ^0.8.24;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
@@ -15,7 +15,7 @@ contract VoteToken is ERC721Enumerable, AccessControl {
     Counters.Counter private _tokenIdCounter;
     mapping(address => bool) private _hasVoted;
     
-    constructor() ERC721("VotaChain Token", "VOTE") {
+    constructor() ERC721("VoteChain Token", "VOTE") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
     }
