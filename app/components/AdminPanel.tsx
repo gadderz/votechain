@@ -83,7 +83,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
             name="position"
             value={newElection.position}
             onChange={handleInputChange}
-            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-black"
             placeholder="Ex: Governador"
           />
         </div>
@@ -95,7 +95,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
             name="region"
             value={newElection.region}
             onChange={handleInputChange}
-            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-black"
             placeholder="Ex: São Paulo"
           />
         </div>
@@ -108,7 +108,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
               name="startTime"
               value={newElection.startTime}
               onChange={handleInputChange}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-black"
             />
           </div>
           
@@ -119,7 +119,7 @@ const AdminPanel: React.FC<AdminPanelProps> = ({
               name="endTime"
               value={newElection.endTime}
               onChange={handleInputChange}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-black"
             />
           </div>
         </div>
