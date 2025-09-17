@@ -11,13 +11,13 @@ import { type Election, type AppState } from '../types';
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "VoteChain - Home" },
+    { name: "description", content: "Welcome to VoteChain!" },
   ];
 }
 
 const CONTRACT_ADDRESSES = {
-  electionManager: "0xff9Ed1dcd36d7Ab0093A8000d39F0AdD28Dc854d", // Endereço do contrato ElectionManager
+  electionManager: "0x88782dfe26a657292d4138683107367731a7c6cb", // Endereço do contrato ElectionManager
 };
 
 export default function Home() {
