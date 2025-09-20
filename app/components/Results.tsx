@@ -71,7 +71,7 @@ const Results: React.FC<ResultsProps> = ({ election, provider }) => {
             <div key={result.candidateId} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
               <div className="flex items-center space-x-3">
                 <span className="text-gray-500 font-medium">#{index + 1}</span>
-                <span className="font-medium text-gray-800">Candidato {result.candidateId}</span>
+                <span className="font-medium text-gray-800">Candidato {result.candidateName}</span>
               </div>
               <span className="font-semibold text-indigo-600">{result.votes} votos</span>
             </div>

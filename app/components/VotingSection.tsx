@@ -53,9 +53,7 @@ const VotingSection: React.FC<VotingSectionProps> = ({
     }
   };
 
-  // Carregar candidatos (simulação)
   const loadCandidates = async (): Promise<void> => {
-    // Em uma implementação real, isso viria do contrato
     const mockCandidates: Candidate[] = [
       { id: 1, name: "Candidato A", number: 123, party: "PARTIDO A" },
       { id: 2, name: "Candidato B", number: 456, party: "PARTIDO B" },
@@ -84,7 +82,7 @@ const VotingSection: React.FC<VotingSectionProps> = ({
       
       const tx = await electionManager.registerVoter(
         election.id,
-        [], // merkle proof vazio para exemplo
+        [],
         ethers.keccak256(ethers.toUtf8Bytes(voterHash))
       );
       
@@ -157,7 +155,7 @@ const VotingSection: React.FC<VotingSectionProps> = ({
               value={voterHash}
               onChange={(e) => setVoterHash(e.target.value)}
               placeholder="Hash do seu título de eleitor"
-              className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-black"
             />
             <button
               onClick={registerVoter}

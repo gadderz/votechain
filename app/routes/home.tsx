@@ -17,7 +17,7 @@ export function meta({}: Route.MetaArgs) {
 }
 
 const CONTRACT_ADDRESSES = {
-  electionManager: "0x88782dfe26a657292d4138683107367731a7c6cb", // Endereço do contrato ElectionManager
+  electionManager: import.meta.env.VITE_ELECTION_MANAGER_CONTRACT_ADDRESS
 };
 
 export default function Home() {
@@ -35,6 +35,11 @@ export default function Home() {
 
   // Conectar à carteira
   const connectWallet = async (): Promise<void> => {
+    if (CONTRACT_ADDRESSES.electionManager === undefined || CONTRACT_ADDRESSES.electionManager === "") {
+      alert("Endereço do contrato ElectionManager não definido. Verifique as variáveis de ambiente.");
+      return;
+    }
+
     if (window.ethereum) {
       try {
         setAppState(prev => ({ ...prev, isLoading: true }));
@@ -52,11 +57,9 @@ export default function Home() {
           isLoading: false 
         }));
         
-        // Verificar se é admin
         await checkIfAdmin(signer);
-        
-        // Carregar eleições
         await loadElections(signer);
+
       } catch (error) {
         console.error("Erro ao conectar carteira:", error);
         setAppState(prev => ({ 
